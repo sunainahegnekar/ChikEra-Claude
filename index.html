@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chikera - Women's Fashion Accessories</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Global styles */
+        body {
+            font-family:Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FDE7BB;
+            color: #3D0301;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cinzel', serif;
+            color: #3D0301;
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            max-width: 1200px;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #FFB38E;
+            padding: 1em;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav div:first-child {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            color: #3D0301;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1em;
+            padding: 0.5em 1em;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #FDE7BB;
+            border-radius: 4px;
+        }
+
+        /* Home Section */
+        #home {
+            text-align: center;
+        }
+
+        #home h1 {
+            font-size: 3.3vw;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+
+        #home p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4em;
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+
+        #home img {
+            width: 500px;
+            height: 340px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,6);
+        }
+
+        /* About Section */
+        #about {
+            background-color: #FFB26F;
+            padding: 70px 0;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            padding: 20px;
+        }
+
+        .about-text {
+            max-width: 600px;
+            padding: 25px;
+            background-color: #FDE7BB;
+            border-radius: 12px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.2em;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .image-group {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 20px 0;
+        }
+
+        .about-img {
+            width: 250px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,6);
+            transition: transform 0.3s ease;
+        }
+
+        .about-img:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Products Section */
+        #products {
+            padding: 70px 0;
+            background-color: #FDE7BB;
+        }
+
+        #products h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            padding: 20px;
+        }
+
+        .product-card {
+            background-color: #FFB38E;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+
+        .product-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .product-card .description {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .product-features {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+
+        .product-features li {
+            margin: 10px 0;
+            font-size: 1.1em;
+            position: relative;
+        }
+
+        .product-features li::before {
+            content: '✦';
+            position: absolute;
+            left: -20px;
+            color: #DE8F5F;
+        }
+
+        .price-range {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.2em;
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(222, 143, 95, 0.2);
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .collection-tag {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: #DE8F5F;
+            color: #FDE7BB;
+            padding: 8px 40px;
+            transform: rotate(45deg);
+            font-family: 'Cinzel', serif;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+        }
+
+        /* Enhanced Lookbook Section */
+        #lookbook {
+            background-color: #FFB38E;
+            padding: 70px 0;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        #lookbook h2 {
+            margin-bottom: 30px;
+        }
+
+        #lookbook p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3em;
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+
+        .lookbook-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .lookbook-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .lookbook-item:hover {
+            transform: scale(1.02);
+        }
+
+        .lookbook-item img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+            box-shadow: 0 8px 16px rgba(0,0,0,6);
+        }
+
+        .lookbook-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .lookbook-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(61, 3, 1, 0.8));
+            padding: 20px;
+            color: #FDE7BB;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lookbook-item:hover .lookbook-overlay {
+            opacity: 1;
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 70px 0;
+            text-align: center;
+        }
+
+        .contact-info p{
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-top: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #DE8F5F;
+            color: #3D0301;
+            padding: 20px;
+            text-align: center;
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .lookbook-grid {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+
+            .lookbook-item img {
+                height: 400px;
+            }
+
+            .image-group {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .about-img {
+                width: 200px;
+                height: 280px;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+            
+            .product-card {
+                padding: 20px;
+            }
+
+            nav {
+                flex-direction: column;
+                text-align: center;
+                padding: 0.5em;
+            }
+
+            nav div:first-child {
+                margin-bottom: 10px;
+            }
+
+            #home h1 {
+                font-size: 6vw;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div>ChikEra</div>
+        <div>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#products">Products</a>
+            <a href="#lookbook">Lookbook</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="container">
+            <h1>Elevate Your Style, Embrace Your Essence</h1>
+            <p>Your destination for stylish accessories</p>
+            <img src="./16.png" alt="Chikera Fashion">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Chikera is more than a brand; it's a fashion journey. We blend elegance and modern trends to offer a unique selection of accessories for women who stand out. Our mission is to empower women to express themselves through style and individuality.</p>
+                </div>
+                
+                <div class="image-group">
+                    <img src="./2.png" alt="Fashionable Woman - Image 1" class="about-img" />
+                    <img src="./5.png" alt="Fashionable Woman - Image 2" class="about-img" />
+                    <img src="./4png.png" alt="Fashionable Woman - Image 3" class="about-img" />
+                </div>
+
+                <div class="about-text">
+                    <p>Our collection is curated with passion, ensuring each piece embodies sophistication and charm. From statement pieces to subtle accents, Chikera has something for every woman who loves to shine. Join us, and let your accessories tell your story.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products">
+        <div class="container">
+            <h2>Our Collections</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="collection-tag">Premium</div>
+                    <h3>Elegant Jewelry</h3>
+                    <p class="description">Discover our exquisite collection of handcrafted jewelry, where timeless elegance meets contemporary design. Each piece tells a unique story of sophistication and grace.</p>
+                    <ul class="product-features">
+                        <li>Hand-selected precious gemstones</li>
+                        <li>18K gold and platinum pieces</li>
+                        <li>Custom design services</li>
+                        <li>Ethically sourced materials</li>
+                    </ul>
+                    <div class="price-range">
+                        Starting from $299
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="collection-tag">Luxury</div>
+                    <h3>Designer Bags</h3>
+                    <p class="description">Elevate your style with our curated selection of designer bags. From sophisticated totes to elegant clutches, each piece is crafted with precision and passion.</p>
+                    <ul class="product-features">
+                        <li>Premium Italian leather</li>
+                        <li>Signature hardware details</li>
+                        <li>Versatile designs</li>
+                        <li>Lifetime warranty</li>
+                    </ul>
+                    <div class="price-range">
+                        Starting from $499
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Lookbook Section -->
+    <section id="lookbook">
+        <div class="container">
+            <h2>Lookbook</h2>
+            <p>Discover our latest collections and styling inspirations</p>
+            
+            <div class="lookbook-grid">
+                <div class="lookbook-item">
+                    <img src="./10.png" alt="Lookbook Image 1">
+                    <div class="lookbook-overlay">
+                        <h3>Spring Collection 2024</h3>
+                        <p>Elegance meets contemporary style</p>
+                    </div>
+                </div>
+                <div class="lookbook-item">
+                    <img src="./11.png" alt="Lookbook Image 2">
+                    <div class="lookbook-overlay">
+                        <h3>Summer Essentials</h3>
+                        <p>Bold accessories for bright days</p>
+                    </div>
+                </div>
+                <div class="lookbook-item">
+                    <img src="./12.png" alt="Lookbook Image 3">
+                    <div class="lookbook-overlay">
+                        <h3>Evening Glamour</h3>
+                        <p>Statement pieces for special occasions</p>
+                    </div>
+                </div>
+                <div class="lookbook-item">
+                    <img src="./9.png" alt="Lookbook Image 4">
+                    <div class="lookbook-overlay">
+                        <h3>Autumn Luxe</h3>
+                        <p>Sophisticated accessories for the season</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+                        <section id="contact">
+                            <div class="container">
+                                <h2>Contact Us</h2>
+                                <p>We'd love to hear from you</p>
+                                <div class="contact-info">
+                                    <p>Email: info@chikera.com</p>
+                                    <p>Phone: (555) 123-4567</p>
+                                    <p>Location: Fashion District, New York</p>
+                                </div>
+                            </div>
+                        </section>
+                        <footer>
+                            <p>&copy; 2024 Chikera. All rights reserved.</p>
+                        </footer>
+                         <!-- GSAP Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Navigation animation
+        gsap.from("nav", {duration: 1, y: -100, opacity: 0, ease: "bounce"});
+        
+        // Home section animations
+        gsap.from("#home h1", {duration: 1, x: -100, opacity: 0, delay: 0.5});
+        gsap.from("#home p", {duration: 1, x: 100, opacity: 0, delay: 0.7});
+        gsap.from("#home img", {duration: 1, y: 50, opacity: 0, delay: 0.9});
+
+        // About section animations
+        gsap.from(".about-text", {
+            scrollTrigger: {
+                trigger: "#about",
+                start: "top center"
+            },
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            stagger: 0.3
+        });
+
+        gsap.from(".about-img", {
+            scrollTrigger: {
+                trigger: ".image-group",
+                start: "top center"
+            },
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            stagger: 0.2
+        });
+
+        // Products section animations
+        // gsap.from(".product-card", {
+        //     scrollTrigger: {
+        //         trigger: "#products",
+        //         start: "top center"
+        //     },
+        //     duration: 1,
+        //     y: 100,
+        //     opacity: 0,
+        //     stagger: 0.3
+        // });
+
+        // Enhanced Lookbook animations
+        gsap.from("#lookbook h2", {
+            scrollTrigger: {
+                trigger: "#lookbook",
+                start: "top center"
+            },
+            duration: 1,
+            y: 50,
+            opacity: 0
+        });
+
+        gsap.from("#lookbook p", {
+            scrollTrigger: {
+                trigger: "#lookbook",
+                start: "top center"
+            },
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            delay: 0.2
+        });
+
+        // Staggered animation for lookbook items
+        gsap.from(".lookbook-item", {
+            scrollTrigger: {
+                trigger: ".lookbook-grid",
+                start: "top center",
+                end: "bottom center",
+                toggleActions: "play none none reverse"
+            },
+            duration: 1,
+            y: 100,
+            opacity: 0,
+            stagger: 0.2,
+            ease: "power2.out"
+        });
+
+        // Parallax effect for lookbook images
+        gsap.to(".lookbook-item img", {
+            scrollTrigger: {
+                trigger: ".lookbook-grid",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1
+            },
+            y: 50,
+            ease: "none"
+        });
+
+        // Contact section animations
+        gsap.from("#contact", {
+            scrollTrigger: {
+                trigger: "#contact",
+                start: "top center"
+            },
+            duration: 1,
+            opacity: 0,
+            y: 50
+        });
+
+        // gsap.from(".contact-info p", {
+        //     scrollTrigger: {
+        //         trigger: ".contact-info",
+        //         start: "top center"
+        //     },
+        //     duration: 0.8,
+        //     opacity: 0,
+        //     y: 30,
+        //     stagger: 0.2
+        // });
+    </script>
